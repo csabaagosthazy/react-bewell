@@ -1,0 +1,32 @@
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #5e503f; /* match theme */
+  z-index: 2000; /* above everything */
+}
+
+.splash-logo {
+  width: 300px; /* A kép szélessége */
+  height: 300px; /* A kép magassága */
+  background-image: url('/public/home.jpg'); /* Helyettesítsd az útvonalat a kép elérési útvonalával */
+  background-size: cover; /* Az egész képet jeleníti meg a háttérben */
+  background-position: center; /* Középre igazítja a képet */
+  border-radius: 50%; /* Kerekített szélek */
+  overflow: hidden; /* A tartalom kívül eső részei el vannak rejtve */
+  border: 8px solid transparent; /* Átlátszó szegély */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Árnyék, ami elmosódást ad a kép szélén */
+}
+
+.splash-text {
+  font-family: 'Great Vibes', cursive;
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}

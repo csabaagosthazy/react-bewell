@@ -1,0 +1,15 @@
+.MuiMenu-paper {
+  min-width: 100px;
+}
+
+img {
+  border-radius: 3px;
+}
+
+.flag-icon {
+  width: 48px;
+  height: 34px; /* common ratio ~1.4 */
+  object-fit: cover; /* crop if needed */
+  border-radius: 2px; /* smooth corners */
+  display: block;
+}
