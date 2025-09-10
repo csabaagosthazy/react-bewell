@@ -1,9 +1,14 @@
 import { client } from '../sanityClient';
 
-const sectionQuery = `*[
+const sectionQuery = `
+*[
   _type == "section" &&
-  count(*[_type == "post" && references(^._id)]) > 0
-]`;
+  count(*[
+    _type == "post" &&
+    $lang in visibleLanguages && 
+    references(^._id)]) > 0
+]
+`;
 
 const postQuery = `
         *[_type == "post"] | order(publishedAt desc) {
@@ -59,13 +64,12 @@ const prepareSections = (fetchSectionsResult, lang) => {
 
 export const fetchSections = (lang) => {
   return client
-    .fetch(sectionQuery)
+    .fetch(sectionQuery, { lang })
     .then((sections) => prepareSections(sections, lang));
 };
 
 const preparePosts = (fetchPostsResult, lang) => {
   const postsToShow = [];
-  console.log('Fetched posts:', fetchPostsResult);
   fetchPostsResult.forEach((post) => {
     if (post.visibleLanguages.includes(lang)) {
       const preparedPost = {
