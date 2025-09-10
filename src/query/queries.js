@@ -48,7 +48,6 @@ const postQuery = `
 const prepareSections = (fetchSectionsResult, lang) => {
   const titlesToshow = [];
   const excludedSlugs = ['kezdolap', 'impresszum'];
-  console.log('Fetched sections:', fetchSectionsResult);
   fetchSectionsResult.forEach((section) => {
     if (section.title[lang] && !excludedSlugs.includes(section.slug.current)) {
       titlesToshow.push({

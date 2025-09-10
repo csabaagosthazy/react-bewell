@@ -12,7 +12,6 @@ export default function MediaContainer({ images, videoUrl, videoCaption }) {
     );
   }
   if (images && images.length === 1) {
-    console.log('Single image URL:', images[0]);
     return (
       <Box
         component='img'

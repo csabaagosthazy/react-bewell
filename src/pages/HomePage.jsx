@@ -31,7 +31,6 @@ export default function HomePage() {
   const { posts, loading, error } = useSanityContent();
   const { lang } = useParams();
   let homePosts = posts.filter((post) => post.sectionSlug === 'kezdolap');
-  console.log(homePosts);
   if (homePosts.length === 0 && !loading && !error) {
     homePosts = getDefaultHomePost(lang);
   }

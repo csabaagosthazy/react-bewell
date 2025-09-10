@@ -17,7 +17,6 @@ export default function PostContent({ post }) {
     textPosition,
     extraContent,
   } = post;
-  console.log('PostContent body:', post);
   const getDirection = () => {
     switch (textPosition) {
       case 'left':
