@@ -15,13 +15,13 @@ const postQuery = `
           extraContent,
           "title": title,
           "body": body,
-          "mainImage": mainImage{
+          "images": mainImage[]{
             asset->{
               _id,
               url,
               metadata { lqip, dimensions }
             },
-            alt
+            shortDescription
           },
           "mainVideo": mainVideo{
             video{
@@ -43,6 +43,7 @@ const postQuery = `
 const prepareSections = (fetchSectionsResult, lang) => {
   const titlesToshow = [];
   const excludedSlugs = ['kezdolap', 'impresszum'];
+  console.log('Fetched sections:', fetchSectionsResult);
   fetchSectionsResult.forEach((section) => {
     if (section.title[lang] && !excludedSlugs.includes(section.slug.current)) {
       titlesToshow.push({
@@ -72,8 +73,7 @@ const preparePosts = (fetchPostsResult, lang) => {
         title: post.title?.[lang] || null,
         section: post.section?.title?.[lang] || null,
         sectionSlug: post.section?.slug?.current || null,
-        imageUrl: post.mainImage?.asset?.url || null,
-        imageAlt: post.mainImage?.shortDescription || null,
+        images: post.images || [],
         videoUrl: post.mainVideo?.video?.asset?.url || null,
         videoCaption: post.mainVideo?.caption || null,
         body: post.body?.[lang] || null,

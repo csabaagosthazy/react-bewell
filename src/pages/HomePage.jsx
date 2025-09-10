@@ -15,8 +15,7 @@ const getDefaultHomePost = (lang) => {
     {
       body: texts[lang] || texts.hu,
       id: 'edf57e76-d0a6-44ef-bf61-49b855657fef',
-      imageAlt: null,
-      imageUrl: '/home.jpg',
+      images: [{ asset: { url: '/home.jpg' } }],
       publishedAt: '2025-09-05T07:24:07.512Z',
       section: 'Kezdőlap',
       sectionSlug: 'kezdolap',

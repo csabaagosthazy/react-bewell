@@ -10,8 +10,7 @@ import TextContent from './TextContent';
 export default function PostContent({ post }) {
   const {
     title,
-    imageUrl,
-    imageAlt,
+    images,
     videoUrl,
     videoCaption,
     body,
@@ -96,8 +95,7 @@ export default function PostContent({ post }) {
           }}
         >
           <MediaContainer
-            imageUrl={imageUrl}
-            imageAlt={imageAlt}
+            images={images}
             videoUrl={videoUrl}
             videoCaption={videoCaption}
           />
