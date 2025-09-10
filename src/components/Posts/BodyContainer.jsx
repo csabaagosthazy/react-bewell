@@ -14,7 +14,7 @@ export default function BodyContainer({ body }) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        textAlign: 'center',
+        textAlign: 'left',
       }}
     >
       <TextContent text={body} />
