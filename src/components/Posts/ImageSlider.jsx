@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Box, IconButton } from '@mui/material';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,14 +6,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function ImageSlider({ images }) {
   const [index, setIndex] = useState(0);
 
-  const nextSlide = () => setIndex((prev) => (prev + 1) % images.length);
-  const prevSlide = () =>
+  const nextSlide = useCallback(() => {
+    setIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const prevSlide = useCallback(() => {
     setIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <Box
