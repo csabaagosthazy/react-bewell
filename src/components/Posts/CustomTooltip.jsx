@@ -6,8 +6,6 @@ export default function CustomTooltip({ text, placement }) {
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen((prev) => !prev);
   const handleClickAway = () => setOpen(false);
-  console.log('CustomTooltip text:', text);
-  console.log('CustomTooltip placement:', placement);
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
