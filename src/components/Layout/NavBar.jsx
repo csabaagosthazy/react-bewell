@@ -5,11 +5,14 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import HomeIcon from '@mui/icons-material/Home';
+import Divider from '@mui/material/Divider';
 
 import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 
@@ -38,9 +41,9 @@ const NavBar = () => {
         <Toolbar disableGutters className='toolbar'>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <IconButton sx={{ p: 0 }}>
-              <Link href={createPathName(lang, '')}>
+              <RouterLink href={createPathName(lang, '')}>
                 <Avatar alt='Home' src='/favicon.ico' />
-              </Link>
+              </RouterLink>
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -73,27 +76,42 @@ const NavBar = () => {
               {sections &&
                 sections.map(({ title, slug }) => (
                   <MenuItem key={slug} onClick={handleCloseNavMenu}>
-                    <Link
+                    <RouterLink
                       className={
-                        theme === 'light'
+                        theme.palette.mode === 'light'
                           ? 'nav-button-collapsed'
                           : 'nav-button-collapsed-dark'
                       }
                       to={`/${lang}/${slug}`}
                     >
                       {title}
-                    </Link>
+                    </RouterLink>
                   </MenuItem>
                 ))}
+              <Divider component='li' />
+              <MenuItem
+                component={RouterLink}
+                to={`/${lang}/`}
+                onClick={handleCloseNavMenu}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <ListItemIcon>
+                  <HomeIcon fontSize='small' />
+                </ListItemIcon>
+              </MenuItem>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {sections &&
               sections.map(({ title, slug }) => (
                 <MenuItem key={slug} onClick={handleCloseNavMenu}>
-                  <Link className='nav-button' to={`/${lang}/${slug}`}>
+                  <RouterLink className='nav-button' to={`/${lang}/${slug}`}>
                     {title}
-                  </Link>
+                  </RouterLink>
                 </MenuItem>
               ))}
           </Box>
