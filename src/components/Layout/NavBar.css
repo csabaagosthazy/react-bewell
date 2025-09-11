@@ -29,4 +29,12 @@
   margin: 0.5rem 0 !important;
   color: #333 !important;
   display: 'block' !important;
+  text-decoration: none !important;
+}
+
+.nav-button-collapsed-dark {
+  margin: 0.5rem 0 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  display: 'block' !important;
+  text-decoration: none !important;
 }

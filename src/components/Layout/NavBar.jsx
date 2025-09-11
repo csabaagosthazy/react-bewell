@@ -16,8 +16,10 @@ import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 import { useParams } from 'react-router-dom';
 import { createPathName } from '../../utils/localeUtils';
 import { useSanityContent } from '../../context/SanityContentProvider';
+import { useTheme } from '@mui/material/styles';
 
 const NavBar = () => {
+  const theme = useTheme();
   const { lang } = useParams();
   const { sections } = useSanityContent();
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -72,7 +74,11 @@ const NavBar = () => {
                 sections.map(({ title, slug }) => (
                   <MenuItem key={slug} onClick={handleCloseNavMenu}>
                     <Link
-                      className='nav-button-collapsed'
+                      className={
+                        theme === 'light'
+                          ? 'nav-button-collapsed'
+                          : 'nav-button-collapsed-dark'
+                      }
                       to={`/${lang}/${slug}`}
                     >
                       {title}
