@@ -3,7 +3,6 @@ import React from 'react';
 import './Footer.css';
 
 import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
@@ -40,6 +39,15 @@ const dictionary = {
   },
 };
 
+const Label = ({ children, className, ...rest }) => {
+  // Filter out any props that shouldn't go to native elements
+  return (
+    <Box component='span' className={className} {...rest}>
+      {children}
+    </Box>
+  );
+};
+
 export default function Footer() {
   const location = useLocation();
   const lang = getLocaleFromPath(location.pathname);
@@ -49,40 +57,38 @@ export default function Footer() {
   };
 
   return (
-    <Box>
-      <BottomNavigation className='footer'>
-        <Box className='footer-icons'>
-          <Stack
-            className='footer-stack'
-            spacing={{ xs: 1, sm: 1 }}
-            direction='row'
-          >
-            <PhoneIcon className='footer-icon' />
-            <span className='footer-label'>{getFooterItem('phone')}</span>
-          </Stack>
-          <Stack
-            className='footer-stack'
-            spacing={{ xs: 1, sm: 1 }}
-            direction='row'
-          >
-            <EmailIcon className='footer-icon' />
-            <span className='footer-label'>{getFooterItem('email')}</span>
-          </Stack>
-          <Stack
-            className='footer-stack'
-            spacing={{ xs: 1, sm: 1 }}
-            direction='row'
-          >
-            <TextSnippetIcon className='footer-icon' />
-            <Link className='footer-link' to={`/${lang}/imprint`}>
-              <span className='footer-label'>{getFooterItem('imprint')}</span>
-            </Link>
-          </Stack>
-        </Box>
-        <Box className='footer-copyright'>
-          <span className='footer-label'>{getFooterItem('copyright')}</span>
-        </Box>
-      </BottomNavigation>
+    <Box component='footer' className='footer'>
+      <Box className='footer-icons'>
+        <Stack
+          className='footer-stack'
+          spacing={{ xs: 1, sm: 1 }}
+          direction='row'
+        >
+          <PhoneIcon className='footer-icon' />
+          <Label className='footer-label'>{getFooterItem('phone')}</Label>
+        </Stack>
+        <Stack
+          className='footer-stack'
+          spacing={{ xs: 1, sm: 1 }}
+          direction='row'
+        >
+          <EmailIcon className='footer-icon' />
+          <Label className='footer-label'>{getFooterItem('email')}</Label>
+        </Stack>
+        <Stack
+          className='footer-stack'
+          spacing={{ xs: 1, sm: 1 }}
+          direction='row'
+        >
+          <TextSnippetIcon className='footer-icon' />
+          <Link className='footer-link' to={`/${lang}/imprint`}>
+            <Label className='footer-label'>{getFooterItem('imprint')}</Label>
+          </Link>
+        </Stack>
+      </Box>
+      <Box className='footer-copyright'>
+        <Label className='footer-label'>{getFooterItem('copyright')}</Label>
+      </Box>
     </Box>
   );
 }
