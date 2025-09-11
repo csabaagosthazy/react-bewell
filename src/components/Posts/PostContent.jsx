@@ -1,7 +1,6 @@
 // components/PostContent.js
 import React from 'react';
-import { Paper, Typography, Stack, Box, IconButton } from '@mui/material';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Paper, Typography, Stack, Box } from '@mui/material';
 import MediaContainer from './MediaContainer';
 import BodyContainer from './BodyContainer';
 import CustomTooltip from './CustomTooltip';
@@ -50,6 +49,7 @@ export default function PostContent({ post }) {
             alignItems: 'center',
             justifyContent: 'space-between',
             mb: 2,
+            position: 'relative',
           }}
         >
           {title && (
@@ -62,14 +62,12 @@ export default function PostContent({ post }) {
             </Typography>
           )}
           {extraContent && (
-            <CustomTooltip
-              title={<TextContent text={extraContent} />}
-              placement='left'
-            >
-              <IconButton size='medium'>
-                <InfoOutlinedIcon fontSize='medium' />
-              </IconButton>
-            </CustomTooltip>
+            <Box sx={{ ml: 'auto' }}>
+              <CustomTooltip
+                text={<TextContent text={extraContent} />}
+                placement='left'
+              />
+            </Box>
           )}
         </Box>
       )}
