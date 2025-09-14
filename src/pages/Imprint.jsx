@@ -68,7 +68,6 @@ export default function Imprint() {
   const { posts, loading, error } = useSanityContent();
   const { lang } = useParams();
   let imprintPosts = posts.filter((post) => post.sectionSlug === 'impresszum');
-  console.log(imprintPosts);
   if (imprintPosts.length === 0 && !loading && !error) {
     imprintPosts = getDefaultImprintPost(lang);
   }
