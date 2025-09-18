@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import ReactPlayer from 'react-player';
 import ImageSlider from './ImageSlider';
+import CustomVideoPlayer from '../CustomVideoPlayer/CustomVideoPlayer';
 
 export default function MediaContainer({ images, videoUrl, videoCaption }) {
   if (images && images.length > 1) {
@@ -28,30 +28,7 @@ export default function MediaContainer({ images, videoUrl, videoCaption }) {
   }
   if (videoUrl) {
     return (
-      <Box sx={{ position: 'relative', paddingTop: '56.25%' }}>
-        <ReactPlayer
-          src={videoUrl}
-          title={videoCaption}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }}
-          controls
-          onContextMenu={(e) => e.preventDefault()}
-          controlsList='nodownload'
-          config={{
-            file: {
-              attributes: {
-                controlsList: 'nodownload',
-                onContextMenu: (e) => e.preventDefault(),
-              },
-            },
-          }}
-        />
-      </Box>
+      <CustomVideoPlayer videoUrl={videoUrl} videoCaption={videoCaption} />
     );
   }
   return null;
