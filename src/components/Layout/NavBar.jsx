@@ -42,7 +42,7 @@ const NavBar = () => {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <IconButton sx={{ p: 0 }}>
               <RouterLink href={createPathName(lang, '')}>
-                <Avatar alt='Home' src='/favicon.ico' />
+                <Avatar alt='Home' src='/home.jpg' />
               </RouterLink>
             </IconButton>
           </Box>
