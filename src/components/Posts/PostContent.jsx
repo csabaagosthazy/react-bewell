@@ -3,8 +3,6 @@ import React from 'react';
 import { Paper, Typography, Stack, Box } from '@mui/material';
 import MediaContainer from './MediaContainer';
 import BodyContainer from './BodyContainer';
-import CustomTooltip from './CustomTooltip';
-import TextContent from './TextContent';
 
 export default function PostContent({ post }) {
   const {
@@ -61,14 +59,6 @@ export default function PostContent({ post }) {
               {title}
             </Typography>
           )}
-          {extraContent && (
-            <Box sx={{ ml: 'auto' }}>
-              <CustomTooltip
-                text={<TextContent text={extraContent} />}
-                placement='left'
-              />
-            </Box>
-          )}
         </Box>
       )}
 
@@ -83,7 +73,7 @@ export default function PostContent({ post }) {
             width: { xs: '100%', md: '50%' },
           }}
         >
-          <BodyContainer body={body} />
+          <BodyContainer body={body} extraContent={extraContent} />
         </Box>
         <Box
           sx={{
